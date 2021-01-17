@@ -1,0 +1,15 @@
+---
+- name: deploy vsftpd
+  hosts: main-ansible-33
+  tasks:
+  - name: install vsftpd
+    apt: name=vsftpd
+  - name: enable vsftpd
+    service: name=vsftpd enabled=true  
+  - name: create readme file
+    copy:
+     content: "welcome to this ftp"
+     dest: /var/ftp/pub/README
+     force: no
+     mode: 0444
+...
