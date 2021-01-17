@@ -1,0 +1,26 @@
+---
+# install apache
+
+- name: install apache
+  apt:
+    name: apache2
+    state: present
+
+- name:  Apache service states
+  service: 
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: Start ufw
+  service:
+    name: ufw
+    state: started
+    enabled: yes
+
+- name: Add firewall ufw rule for apache
+  ufw:
+   rule: allow
+   port: "{{ httpd_port }}"
+   proto: tcp
+ 

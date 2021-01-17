@@ -1,0 +1,14 @@
+---
+# This playbook contains base plays for all nodes
+
+- name: Install firewalld
+  apt:
+    name: ufw
+    state: present
+
+- name: Start the firewall service
+  service:
+    name: ufw
+    state: started
+    enabled: yes 
+
